@@ -1,12 +1,16 @@
 pipeline {
     agent any
 
-    stage('Build Backend Image') {
-    steps {
-        sh 'docker rmi -f backend-app || true'
-        sh 'docker build -t backend-app backend'
-    }
-}
+    stages {
+
+        stage('Build Backend Image') {
+            steps {
+                sh '''
+                docker rmi -f backend-app || true
+                docker build -t backend-app backend
+                '''
+            }
+        }
 
         stage('Deploy Backend Containers') {
             steps {
@@ -35,6 +39,7 @@ pipeline {
                 '''
             }
         }
+
     }
 
     post {
