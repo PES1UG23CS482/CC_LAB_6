@@ -42,10 +42,10 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline executed successfully.'
+            echo 'Pipeline executed successfully. NGINX load balancer is running.'
         }
         failure {
-            echo 'Pipeline failed.'
+            echo 'Pipeline failed. Check console logs for errors.'
         }
     }
 }
